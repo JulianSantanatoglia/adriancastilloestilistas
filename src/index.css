@@ -1,0 +1,59 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background font-sans text-text antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Tijeras del botón flotante de WhatsApp */
+.scissor-blade {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+}
+.scissor-blade-a {
+  animation: snip-a 4s ease-in-out infinite;
+}
+.scissor-blade-b {
+  animation: snip-b 4s ease-in-out infinite;
+}
+@keyframes snip-a {
+  0%, 40%, 100% { transform: rotate(8deg); }
+  8%, 24% { transform: rotate(-6deg); }
+  16%, 32% { transform: rotate(8deg); }
+}
+@keyframes snip-b {
+  0%, 40%, 100% { transform: rotate(-8deg); }
+  8%, 24% { transform: rotate(6deg); }
+  16%, 32% { transform: rotate(-8deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scissor-blade-a,
+  .scissor-blade-b {
+    animation: none;
+  }
+}
